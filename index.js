@@ -6,16 +6,14 @@ function fToCel(fahrenheit)
 {
     var fTemp = fahrenheit;
     var fToCel = (fTemp - 32) * 5 / 9;
-    var output = fTemp+'\xB0F is ' + fToCel + '\xB0C.';
-    console.log(output)
+    console.log(fToCel)
 }
 
 function celToF(celsius)
 {
     var celTemp = celsius;
     var celToF = celTemp * 9 / 5 + 32;
-    var output = celTemp+'\xB0C is ' + celToF + '\xB0F.';
-    console.log(output)
+    console.log(celToF)
 }
 
 
@@ -27,15 +25,6 @@ function average(array) {
 }
 console.log(average([1,2,3,4,5]))
 
-
-// function avg(array){
-//         let sum = 0;
-//         for (let i = 0; i < array.length; i++){
-//             sum += array[i];
-//         }
-//         return sum / array.length
-//     }
-//     console.log(avg([1,2,3,4,5]))
 
 
 
@@ -88,8 +77,16 @@ function isPrime(num){
 }
 console.log(isPrime(11))
 
+
 // 6. Create a function that receives an array of diverse numbers 
 // and returns an array containing only positive numbers
+
+function getPositiveNumbers(numbers){
+    return numbers.filter(number => number > 0);
+}
+inputArray = [3, -2, 0, 8, -5, -1, 10];
+positiveNumbers = getPositiveNumbers(inputArray);
+console.log(positiveNumbers)
 
 
 
@@ -112,3 +109,33 @@ else{
     console.log(i)
 }
 }
+
+
+
+// 8. The marketing team is spending way too much time typing in hashtags. Let's create a hashtag generator
+// for them, our hashtag generator will meet the folllowing criteria;
+// *It must start with a hash symbol, #.
+// *Ignore all spaces in the input
+// *All words must have their letter capitalized.
+// *If the finial result is going to be 140 characters, it should return false
+// *If the input or result is an empty string, it should return false
+
+function generateHashtag(input) {
+    if (!input || input.trim()=== ""){
+        return false;
+    }
+
+    words = input.trim().split(" ");
+    capitalizedWords = words.map(word => word.charAt(0).toUpperCase() + word.slice(1));
+
+    hashtag = "#" + capitalizedWords.join("");
+
+    if (hashtag.length > 140){
+        return false;
+    }
+
+    return hashtag;
+}
+inputString = "hello doris";
+hashtag = generateHashtag(inputString);
+console.log(hashtag);
